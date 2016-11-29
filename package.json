@@ -1,0 +1,32 @@
+{
+  "name": "kristof-site-2016",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Brocfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "./node_modules/broccoli-cli/bin/broccoli serve",
+    "build": "rm -rf ./dist && BROCCOLI_ENV=production ./node_modules/broccoli-cli/bin/broccoli build dist",
+    "publish": "rm -rf ./dist && BROCCOLI_ENV=production ./node_modules/broccoli-cli/bin/broccoli build dist && git push origin :gh-pages && git checkout -b tmp-gh-page && git add dist && git commit -m \"\" && git subtree push --prefix dist origin gh-pages && git checkout - && git branch -D tmp-gh-page && rm -rf ./dist"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "broccoli": "^0.16.9",
+    "broccoli-asset-rev": "^2.4.2",
+    "broccoli-autoprefixer": "^4.1.0",
+    "broccoli-clean-css": "^1.1.0",
+    "broccoli-cli": "^1.0.0",
+    "broccoli-concat": "^2.1.0",
+    "broccoli-env": "0.0.1",
+    "broccoli-funnel": "^1.0.1",
+    "broccoli-htmlmin": "^2.1.0",
+    "broccoli-imagemin": "^0.2.1",
+    "broccoli-inject-livereload": "^0.2.0",
+    "broccoli-merge-trees": "^1.1.1",
+    "broccoli-sass": "^0.7.0",
+    "broccoli-uglify-js": "^0.1.3",
+    "broccoli-webfont": "^0.2.2",
+    "livereload": "^0.4.1"
+  }
+}

@@ -1,0 +1,26 @@
+$color-light: #c5c5c5;
+$color-dark: #2c2a2a;
+
+$color-light-grey: #8f8f8f;
+$color-mid-grey: #656565;
+$color-dark-grey: #4d4c4c;
+
+a {
+  transition: color .2s;
+}
+
+a,
+a:active,
+a:visited,
+label,
+label:focus,
+label:active {
+  color: $color-mid-grey;
+  outline: none;
+}
+
+a:hover,
+label:hover {
+  color: $color-light;
+}
+
