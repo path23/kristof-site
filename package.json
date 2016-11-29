@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "./node_modules/broccoli-cli/bin/broccoli serve",
     "build": "rm -rf ./dist && BROCCOLI_ENV=production ./node_modules/broccoli-cli/bin/broccoli build dist",
-    "publish": "rm -rf ./dist && BROCCOLI_ENV=production ./node_modules/broccoli-cli/bin/broccoli build dist && git push origin :gh-pages && git checkout -b tmp-gh-page && git add dist && git commit -m \"\" && git subtree push --prefix dist origin gh-pages && git checkout - && git branch -D tmp-gh-page && rm -rf ./dist"
+    "publish": "rm -rf ./dist && BROCCOLI_ENV=production ./node_modules/broccoli-cli/bin/broccoli build dist && git push origin :gh-pages && git checkout -b tmp-gh-page && git add dist -f && git commit -m \"go!\" && git subtree push --prefix dist origin gh-pages && git checkout - && git branch -D tmp-gh-page && rm -rf ./dist"
   },
   "author": "",
   "license": "ISC",

@@ -18,7 +18,7 @@ var server = livereload.createServer();
 server.watch(__dirname + "/tmp");
 
 var html = funnel('app', {
-  files   : ['index.html', '404.html'],
+  files   : ['index.html'],
   destDir : '/'
 });
 
