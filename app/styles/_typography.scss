@@ -25,5 +25,18 @@ a {
   &:focus {
     outline: none;
   }
+
+  &:active {
+    color: $color-light;
+  }
 }
 
+.icon {
+  display: inline-block;
+  width: 2em;
+  height: 2em;
+  vertical-align: middle;
+  color: $color-light;
+  fill: currentColor;
+  padding: 0.5em;
+}

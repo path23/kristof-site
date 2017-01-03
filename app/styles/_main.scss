@@ -334,21 +334,45 @@ body {
 
   .about {
     max-width: 95%;
-
+    text-align: center;
     margin: 0 auto;
     padding: 2rem 0;
-
-
-    & h1 {
-      font-size: 1.1rem;
-      font-weight: 400;
-      margin: 0 1rem;
-    }
+    font-size: 0.65rem;
+    line-height: 1.618;
+    color: $color-mid-grey;
 
     & p {
+      text-transform: uppercase;
+      padding: 0 15%;
+
+      & span {
+        margin: 0 1em;
+      }
+
+      &.justify {
+        text-align: justify;
+      }
+    }
+
+    & form {
+
+    }
+
+    & input {
+      outline: none;
+      border: none;
+      background-color: transparent;
+      font-size: inherit;
+      color: $color-light-grey;
+      padding: 0.5em 1em;
       text-align: center;
-      font-size: 0.75rem;
-      line-height: 1.3rem;
+      text-transform: uppercase;
+      margin-top: 1em;
+
+      &[type=email] {
+        background-color: $color-dark-grey;
+        min-width: 250px;
+      }
     }
   }
 
