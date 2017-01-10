@@ -68,7 +68,27 @@
         },
         '404':{
         },
-        'fashion-1': {
+        'comissioned': {
+          'rendered': initGallery,
+          'exited': teardownGallery
+        },
+        'comissioned-1': {
+          'rendered': initGallery,
+          'exited': teardownGallery
+        },
+        'comissioned-2': {
+          'rendered': initGallery,
+          'exited': teardownGallery
+        },
+        'comissioned-3': {
+          'rendered': initGallery,
+          'exited': teardownGallery
+        },
+        'comissioned-4': {
+          'rendered': initGallery,
+          'exited': teardownGallery
+        },
+        'comissioned-5': {
           'rendered': initGallery,
           'exited': teardownGallery
         },
@@ -81,10 +101,6 @@
           'exited': teardownGallery
         },
         'portrait': {
-          'rendered': initGallery,
-          'exited': teardownGallery
-        },
-        'comission': {
           'rendered': initGallery,
           'exited': teardownGallery
         },

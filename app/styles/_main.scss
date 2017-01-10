@@ -33,7 +33,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    flex: 0 0 3rem;
+    flex: 0 0 4rem;
 
     h1 {
       color: $color-light-grey;
@@ -243,9 +243,9 @@ body {
   }
 
   .content {
-    flex: 1 0 calc(100vh - 6.5rem);
+    flex: 1 0 calc(100vh - 10rem);
     margin: 0.5rem 0;
-    height: calc(100vh - 6.5rem);
+    height: calc(100vh - 10rem);
 
     & > * {
       display: none;
@@ -286,6 +286,7 @@ body {
     .gallery-cell {
       height: 100%;//calc(100vh - 5.5rem);
       overflow: hidden;
+      margin-left: 3px;
 
       & picture {
         display: block;
@@ -319,7 +320,7 @@ body {
     }
 
   .footer {
-    flex: 0 1 .5rem;
+    flex: 0 1 3rem;
     font-size: .47rem;
     line-height: 1;
   }
