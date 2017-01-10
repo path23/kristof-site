@@ -92,15 +92,35 @@
           'rendered': initGallery,
           'exited': teardownGallery
         },
-        'fashion-1-alpha': {
+        'editorial': {
           'rendered': initGallery,
           'exited': teardownGallery
         },
-        'fashion-2': {
+        'editorial-1': {
+          'rendered': initGallery,
+          'exited': teardownGallery
+        },
+        'editorial-2': {
           'rendered': initGallery,
           'exited': teardownGallery
         },
         'portrait': {
+          'rendered': initGallery,
+          'exited': teardownGallery
+        },
+        'portrait-1': {
+          'rendered': initGallery,
+          'exited': teardownGallery
+        },
+        'portrait-2': {
+          'rendered': initGallery,
+          'exited': teardownGallery
+        },
+        'portrait-3': {
+          'rendered': initGallery,
+          'exited': teardownGallery
+        },
+        'fashion-2': {
           'rendered': initGallery,
           'exited': teardownGallery
         },
