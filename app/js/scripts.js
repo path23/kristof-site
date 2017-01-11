@@ -48,7 +48,7 @@
             app.lastFlickity = new Flickity('#' + app.routeID, flickityOptions);
           }
         );
-      }, 10);
+      }, 40);
     }
   }
 
