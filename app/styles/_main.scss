@@ -325,14 +325,13 @@ body {
     flex: 0 1 3rem;
     font-size: .47rem;
     line-height: 1;
+    display: flex;
+    align-items: flex-end;
   }
 
 .about-section {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 100%;
-  height: calc(100vh - 5.5rem);
+  height: calc(100vh - 8.5rem);
   overflow: scroll;
 
   .about {
@@ -346,10 +345,11 @@ body {
 
     & p {
       text-transform: uppercase;
-      padding: 0 15%;
+      padding: 0 10px;
+      font-size: calc(14px + (16 - 14) * (100vw - 400px) / (800 - 400) );
 
       & span {
-        margin: 0 1em;
+        //margin: 0 1em 0 0;
       }
 
       &.justify {
