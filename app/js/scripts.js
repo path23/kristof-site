@@ -29,26 +29,34 @@
   function initGallery() {
     var sources = app.routeElem.querySelectorAll('.gallery-cell *[data-srcset]');
     if (sources.length) {
+      var promises = [];
       for (var i=0; i < sources.length; i++) {
-        sources[i].setAttribute('srcset', sources[i].dataset.srcset);
+        var item = sources[i];
+        item.setAttribute('srcset', item.dataset.srcset);
+        if (item.tagName === 'IMG') {
+          promises.push(new RSVP.Promise(function(resolve, reject) {
+            var listener = function(ev) {
+              item.removeEventListener('load', listener);
+              console.log('loaded');
+              resolve();
+            };
+            item.addEventListener('load', listener);
+          }));
+        }
       }
-      // sources.forEach(function(it) {
-      //   it.setAttribute('srcset', it.dataset.srcset);
-      // });
       picturefill({elements: sources});
 
+      RSVP.all(promises).finally(function() {
+        window.setTimeout(function() {
+          app.lastFlickity = new Flickity('#' + app.routeID, flickityOptions);
+        }, 40);
+      });
       // window.requestAnimationFrame(
       //   function() {
       //     app.lastFlickity = new Flickity('#' + app.routeID, flickityOptions);
       //   }
       // );
-      window.setTimeout(function() {
-        window.requestAnimationFrame(
-          function() {
-            app.lastFlickity = new Flickity('#' + app.routeID, flickityOptions);
-          }
-        );
-      }, 40);
+
     }
   }
 

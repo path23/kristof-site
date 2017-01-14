@@ -246,6 +246,7 @@ body {
     flex: 1 0 calc(100vh - 10rem);
     margin: 0.5rem 0;
     height: calc(100vh - 10rem);
+    background-color: inherit;
 
     & > * {
       display: none;
@@ -276,6 +277,7 @@ body {
         bottom: 0;
         right: 0;
         z-index: 3;
+        background-color: inherit;
       }
     }
 

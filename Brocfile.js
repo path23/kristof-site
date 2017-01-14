@@ -27,9 +27,14 @@ if (env !== 'production') {
 }
 
 html = htmlMin(html);
+// 
+// var jstree = funnel('app/js', {
+//   destDir: '/assets/'
+// });
 
-var jstree = funnel('app/js', {
-  destDir: '/assets/'
+var jstree = concat('app', {
+  inputFiles : ['**/*.js'],
+  outputFile : '/assets/app.js'
 });
 
 if (env === 'production') {
