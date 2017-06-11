@@ -1,6 +1,11 @@
+html {
+  height: 100%;
+}
+
 body {
   position: relative;
-  height: 100vh;
+  min-height: calc(100% + 0px);
+  max-height: calc(100% + 0px);
 }
 
 .color-switch {
@@ -86,9 +91,9 @@ body {
         bottom: 0;
         top: 0;
         opacity: 0;
-        transform: translateY(-100vh);
-        transition: transform 0.3s ease-out, opacity 0.25s ease-out;
-        will-change: transform, opacity;
+        transition: opacity 0.5s ease-out;
+        will-change: opacity;
+        pointer-events: none;
       }
 
       &:target {
@@ -96,8 +101,8 @@ body {
       }
 
       &:target:before {
-        transform: translateY(0);
-        transition: transform 0.4s ease-out, opacity 0.3s ease-out;
+        // transform: translateY(0);
+        // transition: transform 0.4s ease-out, opacity 0.3s ease-out;
         opacity: 1;
       }
 
@@ -243,10 +248,11 @@ body {
   }
 
   .content {
-    flex: 1 0 calc(100vh - 10rem);
+    flex: 1 0 calc(100% - 7rem);
     margin: 0.5rem 0;
-    height: calc(100vh - 10rem);
+    height: calc(100% - 7rem);
     background-color: inherit;
+    overflow: hidden;
 
     & > * {
       display: none;
@@ -269,6 +275,7 @@ body {
 
     .content-section {
       height: 100%;
+      position: relative;
 
       &.content-section--full {
         position: absolute;
@@ -278,6 +285,7 @@ body {
         right: 0;
         z-index: 3;
         background-color: inherit;
+        margin: 0;
       }
     }
 
@@ -288,7 +296,7 @@ body {
     .gallery-cell {
       height: 100%;//calc(100vh - 5.5rem);
       overflow: hidden;
-      margin-left: 3px;
+      margin-left: 0.5em;
 
       & picture {
         display: block;
@@ -349,7 +357,11 @@ body {
       font-size: calc(14px + (16 - 14) * (100vw - 400px) / (800 - 400) );
 
       & span {
-        //margin: 0 1em 0 0;
+        &:not(first-of-type) {
+          margin-left: 0.5em;
+        }
+
+        display: inline-block;
       }
 
       &.justify {

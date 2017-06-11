@@ -1,6 +1,7 @@
 (function() {
   var flickityOptions = {
     imagesLoaded: true,
+    // lazyLoad: true,
     // enable keyboard navigation, pressing left & right keys
     adaptiveHeight: true,
     accessibility: true,
@@ -14,6 +15,7 @@
     // without aligning cells
     freeScroll: true,
     friction: 0.2,
+    //freeScrollFriction: 0.07,
     percentPosition: false,
     prevNextButtons: false,
     pageDots: false,
@@ -21,15 +23,42 @@
     // listens to window resize events to adjust size & positions
     rightToLeft: false,
     // enables right-to-left layout
-    setGallerySize: true,
+    setGallerySize: false,
     watchCSS: false,
     wrapAround: true
   };
+
+  if (typeof Object.assign != 'function') {
+    Object.assign = function(target, varArgs) { // .length of function is 2
+      'use strict';
+      if (target == null) { // TypeError if undefined or null
+        throw new TypeError('Cannot convert undefined or null to object');
+      }
+
+      var to = Object(target);
+
+      for (var index = 1; index < arguments.length; index++) {
+        var nextSource = arguments[index];
+
+        if (nextSource != null) { // Skip over if undefined or null
+          for (var nextKey in nextSource) {
+            // Avoid bugs when hasOwnProperty is shadowed
+            if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
+              to[nextKey] = nextSource[nextKey];
+            }
+          }
+        }
+      }
+      return to;
+    };
+  }
 
   function initGallery() {
     var sources = app.routeElem.querySelectorAll('.gallery-cell *[data-srcset]');
     if (sources.length) {
       var promises = [];
+      var flick;
+
       for (var i=0; i < sources.length; i++) {
         var item = sources[i];
         item.setAttribute('srcset', item.dataset.srcset);
@@ -37,7 +66,7 @@
           promises.push(new RSVP.Promise(function(resolve, reject) {
             var listener = function(ev) {
               item.removeEventListener('load', listener);
-              console.log('loaded');
+              console.log('loaded ' + app.routeID);
               resolve();
             };
             item.addEventListener('load', listener);
@@ -46,25 +75,22 @@
       }
       picturefill({elements: sources});
 
-      RSVP.all(promises).finally(function() {
-        window.setTimeout(function() {
-          app.lastFlickity = new Flickity('#' + app.routeID, flickityOptions);
-        }, 40);
-      });
-      // window.requestAnimationFrame(
-      //   function() {
-      //     app.lastFlickity = new Flickity('#' + app.routeID, flickityOptions);
-      //   }
-      // );
-
+      flick = Flickity.data('#' + app.routeID);
+      if (! flick) {
+        flick = new Flickity('#' + app.routeID, Object.assign({}, flickityOptions));
+        RSVP.all(promises).finally(function() {
+          window.setTimeout(function() {
+            flick.select(0, true, true);
+            flick.reposition();
+            //console.log('repositioned ' + app.routeID);
+          }, 90);
+        });
+      }
     }
   }
 
   function teardownGallery() {
-    if (app.lastFlickity) {
-      app.lastFlickity.destroy();
-      app.lastFlickity = null;
-    }
+
   }
 
   var app = {
@@ -136,7 +162,15 @@
           'rendered': initGallery,
           'exited': teardownGallery
         },
-        'personal':{
+        'music-1':{
+          'rendered': initGallery,
+          'exited': teardownGallery
+        },
+        'still':{
+          'rendered': initGallery,
+          'exited': teardownGallery
+        },
+        'still-1':{
           'rendered': initGallery,
           'exited': teardownGallery
         },
@@ -190,3 +224,13 @@
 })();
 
 app.init();
+
+document.body.style.height = window.innerHeight + "px";
+
+window.addEventListener("orientationchange", e => {
+    if (document.body.offsetWidth < 768) document.body.style.height = window.innerHeight + "px";
+}, false);
+
+window.addEventListener("resize", e => {
+    if (document.body.offsetWidth < 768) document.body.style.height = window.innerHeight + "px";
+}, false);
