@@ -10,7 +10,7 @@ var env = require('broccoli-env').getEnv();
 var cleanCss = require('broccoli-clean-css');
 var htmlMin = require('broccoli-htmlmin');
 var assetRev = require('broccoli-asset-rev');
-var uglify = require('broccoli-uglify-js');
+var uglify = require('broccoli-uglify-sourcemap');;
 var imageMin = require('broccoli-imagemin');
 
 // Start up live reload.
@@ -27,7 +27,7 @@ if (env !== 'production') {
 }
 
 html = htmlMin(html);
-// 
+//
 // var jstree = funnel('app/js', {
 //   destDir: '/assets/'
 // });
@@ -38,7 +38,7 @@ var jstree = concat('app', {
 });
 
 if (env === 'production') {
-  jstree = uglify(jstree, {compress: true, mangle: false});
+  jstree = uglify(jstree, {compress: false, mangle: false});
 }
 
 var publicFiles = funnel('public', {
