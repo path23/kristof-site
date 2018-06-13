@@ -152,6 +152,10 @@
           'rendered': initGallery,
           'exited': teardownGallery
         },
+        'still-2':{
+          'rendered': initGallery,
+          'exited': teardownGallery
+        },
         'about': {},
         'menu': {}
       },
